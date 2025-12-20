@@ -1,6 +1,9 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 const Courses = () => {
+  const useQuery = ()=> {
+  return new URLSearchParams(useLocation().search);
+}
     const tasks = [
   {
     id: 1,
@@ -36,15 +39,33 @@ const Courses = () => {
   }
 ];
 
+const query = useQuery();
+const searchTerm = query.get("q") || "";
+const navigate = useNavigate();
+const [search, setSearch] = useState(searchTerm);
+useEffect(() => {
+if(search) {
+   navigate(`?q=${search}`);
+} else {
+  navigate("");
+}
+}, [search, navigate])
+const filteredTask = tasks.filter(tasks => tasks.title.toLocaleLowerCase().includes(search.toLocaleLowerCase()))
   return (
     <>
     <h1 className='text-2xl text-gray-800 font-bold mb-3'>All Courses</h1>
+    <div className='flex flex-col gap-3'>
+      <input className='border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-sky-600 ' 
+      type="text"
+      value={search} onChange={(e) => setSearch(e.target.value)} />
+      <button className='py-2 px-3 bg-green-800 text-white'>Search</button>
+    </div>
        {
         tasks.length > 0 ? (
          <ul>
           <div className='grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3'>
          {
-          tasks.map((task, index) => (
+          filteredTask.map((task, index) => (
             <li key={task.id}> 
             <NavLink to={`/course/${task.id}`}>
              <div key={index} className='max-w-[400px] p-5 shadow-md rounded-md'>
