@@ -32,10 +32,82 @@ const Courses = () => {
   {
     id: 4,
     title: "Logo Design",
-    image: "images/Screenshot 2025-12-06 161336.png",
+    image: "images/download (10).jpg",
     description: "Create a professional and unique business logo.",
     stars: 4.3,
     price: 80
+  },
+  {
+    id: 5,
+    title: "Web Development",
+    image: "images/download (3).jpg",
+    description: "Learn how to build modern and responsive websites using HTML, CSS, JavaScript, and frameworks.",
+    stars: 4.8,
+    price: 1000
+  },
+  {
+    id: 6,
+     title: "Frontend Development",
+     image: "images/download.png",
+    description: "Build interactive user interfaces using HTML, CSS, JavaScript, and React with real projects.",
+    stars: 4.7,
+     price: 150
+  },
+  {
+    id: 7,
+    title: "Mobile App Development",
+    image: "images/images.jpg",
+    description: "Create mobile applications and understand how Android and iOS apps work.",
+    stars: 4.6,
+    price: 180
+  },
+  {
+    id: 8,
+    title: "UI / UX Design",
+    image: "images/download.jpg",
+    description: "Learn how to design clean, user-friendly interfaces and improve user experience.",
+    stars: 4.5,
+     price: 100
+  },
+  {
+    id: 9,
+    title: "Data Analysis",
+    image: "images/download (4).jpg",
+    description: "Analyze and visualize data using tools like Excel and Python for better decision-making.",
+    stars: 4.4,
+      price: 200
+  },
+  {
+    id: 10,
+    title: "Artificial Intelligence Basics",
+    image: "images/download (5).jpg",
+    description: "Understand the fundamentals of AI and how it is used in real-world applications.",
+    stars: 4.3,
+    price: 220
+  },
+  {
+    id: 11,
+    title: "Cyber Security Fundamentals",
+    image: "images/download (9).jpg",
+    description: "Learn how to protect systems, networks, and data from cyber threats.",
+    stars: 4.6,
+     price: 170
+  },
+  {
+    id: 12,
+    title: "Digital Marketing",
+    image: "images/download (7).jpg",
+    description: "Learn SEO, social media marketing, and online advertising strategies.",
+    stars: 4.5,
+     price: 90
+  }, 
+  {
+    id: 13,
+    title: "IT Support",
+    image: "images/download (8).jpg",
+    description: "Gain essential IT support skills including troubleshooting and basic networking.",
+    stars: 4.4,
+     price: 80
   }
 ];
 
@@ -58,7 +130,7 @@ const filteredTask = tasks.filter(tasks => tasks.title.toLocaleLowerCase().inclu
       <input className='border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-sky-600 ' 
       type="text"
       value={search} onChange={(e) => setSearch(e.target.value)} />
-      <button className='py-2 px-3 bg-green-800 text-white'>Search</button>
+      <button className='py-2 px-3 bg-orange-500 text-white mb-10'>Search</button>
     </div>
        {
         tasks.length > 0 ? (
@@ -70,7 +142,7 @@ const filteredTask = tasks.filter(tasks => tasks.title.toLocaleLowerCase().inclu
             <NavLink to={`/course/${task.id}`}>
              <div key={index} className='max-w-[400px] p-5 shadow-md rounded-md'>
               <div className='flex flex-col gap-3'>
-              <img src={task.image} alt={task.title} />
+              <img className='rounded' src={task.image} alt={task.title} />
               <h1 className='text-xl text-gray-800 font-bold'>{task.title}</h1>
               <div className='flex justify-between items-center'>
                 <strong>${task.price}</strong>
