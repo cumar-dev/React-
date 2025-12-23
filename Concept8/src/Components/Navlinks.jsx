@@ -13,7 +13,7 @@ const Navlinks = () => {
   }
   return (
     <div className='bg-gray-50 py-6 px-6'>
-        <header className='bg-white w-full shadow-md p-6'>
+        <header className='bg-white w-full shadow p-6'>
          <div className='max-w-4xl mx-auto'>
          <div className='flex justify-between items-center'>
          <div>
@@ -39,7 +39,7 @@ const Navlinks = () => {
           isMenueOpen && (
             <div className='relative'>
             <div className='sm:hidden absolute top-full left-0 w-full bg-white z-40'>
-              <div className='mt-2space-y-2  rounded-lg shadow-md ring-1 ring-black/5'>
+              <div className='mt-2 space-y-2 rounded-lg shadow-md  ring-1 ring-black/5'>
                     <NavLink className={({ isActive }) =>
         `block px-4 py-3 text-sm font-medium rounded-md border-l-4 border-orange-500 text-base font-medium
         ${
