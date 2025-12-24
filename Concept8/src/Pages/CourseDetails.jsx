@@ -1,7 +1,9 @@
-import React from 'react';
+import React  from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-
+import { AuthContext } from "../AuthContext";
+import { useContext } from 'react';
 const CourseDetails = () => {
+   const { addToCart } = useContext(AuthContext);
  const tasks = [
   {
     id: 1,
@@ -152,7 +154,7 @@ const CourseDetails = () => {
             </span>
           </div>
 
-          <button className="mt-4 bg-green-600 text-white px-5 py-2 rounded hover:bg-blue-700 transition">
+          <button onClick={() => addToCart(taskData)} className="mt-4 bg-green-600 text-white px-5 py-2 rounded hover:bg-blue-700 transition">
             Add to Cart
           </button>
         </div>

@@ -49,13 +49,13 @@ const Courses = () => {
     id: 6,
      title: "Frontend Development",
      image: "images/download.png",
-    description: "Build interactive user interfaces using HTML, CSS, JavaScript, and React with real projects.",
-    stars: 4.7,
+     description: "Build interactive user interfaces using HTML, CSS, JavaScript, and React with real projects.",
+     stars: 4.7,
      price: 150
   },
   {
     id: 7,
-    title: "Mobile App Development",
+    title: "Mobile Application Development",
     image: "images/images.jpg",
     description: "Create mobile applications and understand how Android and iOS apps work.",
     stars: 4.6,
@@ -130,7 +130,7 @@ const filteredTask = tasks.filter(tasks => tasks.title.toLocaleLowerCase().inclu
       <input className='border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-sky-600 ' 
       type="text"
       value={search} onChange={(e) => setSearch(e.target.value)} />
-      <button className='py-2 px-3 bg-orange-500 text-white mb-10'>Search</button>
+      <button className='py-2 px-3 bg-orange-500 text-white mb-10 cursor-pointer'>Search</button>
     </div>
        {
         tasks.length > 0 ? (
@@ -140,8 +140,8 @@ const filteredTask = tasks.filter(tasks => tasks.title.toLocaleLowerCase().inclu
           filteredTask.map((task, index) => (
             <li key={task.id}> 
             <NavLink to={`/course/${task.id}`}>
-             <div key={index} className='max-w-[400px] p-5 shadow-md rounded-md'>
-              <div className='flex flex-col gap-3'>
+             <div key={index} className='max-w-[400px] p-5 shadow-md rounded-md mb-5 transition duration-300 ease-in-out hover:scale-110'>
+              <div className='flex flex-col gap-3 '>
               <img className='rounded' src={task.image} alt={task.title} />
               <h1 className='text-xl text-gray-800 font-bold'>{task.title}</h1>
               <div className='flex justify-between items-center'>

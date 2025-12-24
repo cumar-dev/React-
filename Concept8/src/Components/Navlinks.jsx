@@ -3,8 +3,9 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../AuthContext'
 import { CiMenuBurger } from "react-icons/ci";
 import { IoCloseOutline } from "react-icons/io5";
+import { IoCartOutline } from "react-icons/io5";
 const Navlinks = () => {
-  const {logout, isAuthanticted } = useContext(AuthContext);
+  const { logout, isAuthanticted, cart } = useContext(AuthContext);
   const [isMenueOpen, setIsMenueOpen] = useState(false);
   const navigate = useNavigate();
   const handleLogout = ()=> {
@@ -21,12 +22,30 @@ const Navlinks = () => {
          </div>
          <nav className='flex items-center gap-3 hidden sm:ml-6 sm:flex sm:space-x-8'>
         <NavLink className={({isActive}) => isActive ? "text-green-700 font-bold underline" : undefined} to='/'>Home</NavLink>
+        
         <NavLink className={({isActive}) => isActive ? "text-green-700 font-bold underline" : undefined} to='/login'>Login</NavLink>
+        
+        
+      {/* {isAuthanticted && (
+        <span className="font-bold">
+          Cart ({cart.length})
+        </span>
+      )} */}
+
         {
           isAuthanticted  && (
             <>
             <NavLink className={({isActive}) => isActive ? "text-green-700 font-bold underline" : undefined} to='/course'>Courses</NavLink>
-        <button onClick={handleLogout} className='bg-orange-600 text-white py-2 px-3 rounded w-[100px] cursor-pointer'>LogOut</button>
+            <NavLink to="/cart" className="relative flex items-center gap-1 bg-gray-100 px-4 py-2 rounded-full hover:bg-gray-200 transition">
+                  <IoCartOutline className="text-xl" />
+                  <span className="font-bold">Cart</span>
+                  {cart.length > 0 && (
+                    <span className="absolute -top-1 -right-1 bg-orange-600 text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full">
+                      {cart.length}
+                    </span>
+                  )}
+                </NavLink>
+           <button onClick={handleLogout} className='bg-orange-600 text-white py-2 px-3 rounded w-[100px] cursor-pointer'>LogOut</button>
         </>
           )
         }
@@ -67,6 +86,7 @@ const Navlinks = () => {
             : "text-gray-700 hover:bg-gray-100"
         }`
       } to='/course'>Courses</NavLink>
+      
         <button onClick={handleLogout} className='block px-4 py-3 text-sm font-medium rounded-md border-l-4 border-orange-500 text-base font-medium hover:bg-gray-100 w-full text-start'>LogOut</button>
         </>
           )

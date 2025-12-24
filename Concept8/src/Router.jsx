@@ -7,6 +7,9 @@ import CourseDetails from "./Pages/CourseDetails"
 import Navbar from "../../Concept7/src/pages/Navbar"
 import Login from "./Pages/Login"
 import { Protect_Rout } from "./Components/Protect_Rout"
+import Cart from "./Pages/Cart"
+
+
 // import Protect_Rout from "./Components/Protect_Rout"
 const router = createBrowserRouter([
     {
@@ -34,10 +37,17 @@ const router = createBrowserRouter([
                 path: "nav",
                 element: <Navbar />
             },
+            
             {
                 path: "login",
                 element: <Login />
-            }
+            }, 
+          {
+            path: "cart",
+            element: (
+                <Protect_Rout element={<Cart />} />
+            )
+          }
         ]
     }
 ]);
